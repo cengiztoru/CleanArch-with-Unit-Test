@@ -1,4 +1,4 @@
-package com.hms.archdemo
+package com.hms.archdemo.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
