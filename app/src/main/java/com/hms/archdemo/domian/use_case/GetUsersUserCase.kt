@@ -4,6 +4,7 @@ import com.hms.archdemo.common.Resource
 import com.hms.archdemo.domian.model.Gender
 import com.hms.archdemo.domian.model.Picture
 import com.hms.archdemo.domian.model.User
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -20,6 +21,7 @@ class GetUsersUserCase @Inject constructor(
         try {
             emit(Resource.Loading)
             //call repository funct todo
+            delay(1000)
             emit(Resource.Success(getMockUserList()))
         } catch (e: Exception) {
             //todo catching exceptions
