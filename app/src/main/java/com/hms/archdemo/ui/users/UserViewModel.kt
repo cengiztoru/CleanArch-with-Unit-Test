@@ -3,10 +3,12 @@ package com.hms.archdemo.ui.users
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hms.archdemo.common.Resource
 import com.hms.archdemo.domian.model.User
 import com.hms.archdemo.domian.use_case.GetUsersUserCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -28,7 +30,7 @@ class UserViewModel @Inject constructor(
                 is Resource.Success -> setUsers(resource.data ?: emptyList())
                 is Resource.Error -> anErrorOccurred(resource.message ?: "")
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     private fun anErrorOccurred(errorMessage: String) {
