@@ -1,6 +1,7 @@
 package com.hms.archdemo.domian.use_case
 
 import com.hms.archdemo.common.Resource
+import com.hms.archdemo.domian.model.Gender
 import com.hms.archdemo.domian.model.Picture
 import com.hms.archdemo.domian.model.User
 import kotlinx.coroutines.flow.Flow
@@ -30,7 +31,9 @@ class GetUsersUserCase @Inject constructor(
 
         list.add(
             User(
-                "Julia Nuñez", "julia.nunez@example.com", "987-969-031", Picture(
+                "Julia Nuñez", "julia.nunez@example.com", "987-969-031",
+                Gender.Female,
+                Picture(
                     "https://randomuser.me/api/portraits/women/72.jpg",
                     "https://randomuser.me/api/portraits/med/women/72.jpg",
                     "https://randomuser.me/api/portraits/thumb/women/72.jpg"
@@ -42,6 +45,7 @@ class GetUsersUserCase @Inject constructor(
             User(
                 "Martins Viana", "martins.viana@example.com",
                 "33) 7470-1214",
+                Gender.Male,
                 Picture(
                     "https://randomuser.me/api/portraits/men/70.jpg",
                     "https://randomuser.me/api/portraits/med/men/70.jpg",
@@ -53,7 +57,9 @@ class GetUsersUserCase @Inject constructor(
         list.add(
             User(
                 "Elina Brunet", "lina.brunet@example.com",
-                "078 021 03 15", Picture(
+                "078 021 03 15",
+                Gender.Female,
+                Picture(
                     "https://randomuser.me/api/portraits/women/77.jpg",
                     "https://randomuser.me/api/portraits/med/women/77.jpg",
                     "https://randomuser.me/api/portraits/thumb/women/77.jpg"
@@ -66,6 +72,7 @@ class GetUsersUserCase @Inject constructor(
             User(
                 "Ole Schönemann", "ole.schonemann@example.com",
                 "0572-9810030",
+                Gender.Male,
                 Picture(
                     "https://randomuser.me/api/portraits/men/65.jpg",
                     "https://randomuser.me/api/portraits/med/men/65.jpg",
