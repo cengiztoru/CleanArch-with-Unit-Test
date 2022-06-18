@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hms.archdemo.ui.theme.ArchitectureDemoTheme
+import com.hms.archdemo.ui.users.UserListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,8 +21,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             ArchitectureDemoTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+
+                    UserListScreen()
+
+                    /* val navController = rememberNavController()
+                     NavHost(
+                         navController = navController,
+                         startDestination = "user_list"
+                     ) {
+                         composable(route = "user_list") {
+                             UserListScreen()
+                         }
+                     }*/
+
                 }
             }
         }
