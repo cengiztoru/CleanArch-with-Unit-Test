@@ -19,12 +19,12 @@ fun UserListItem(
     user: User
 ) {
     Card(elevation = 8.dp,
-        modifier = Modifier.fillMaxWidth().padding(16.dp).wrapContentSize(),
+        modifier = Modifier.fillMaxWidth().padding(top = 16.dp, start = 16.dp, end = 16.dp).wrapContentSize(),
         backgroundColor = if (user.gender is Gender.Male) Color.Blue else Color.Magenta
 
     ) {
         Row(
-            modifier = Modifier.wrapContentSize()
+            modifier = Modifier.fillMaxWidth()
         ) {
             GlideImage(
                 modifier = Modifier.size(150.dp)

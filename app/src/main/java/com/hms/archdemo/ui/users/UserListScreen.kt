@@ -21,35 +21,45 @@ fun UserListScreen(
 ) {
     val uiState = viewModel.uiState.value
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        if (uiState.users.isNotEmpty()){
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(uiState.users) { user ->
-                    UserListItem(user)
+    Column {
+
+        Text(
+            "Users",
+            style = MaterialTheme.typography.h4,
+            modifier = Modifier.padding(start = 16.dp)
+        )
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            if (uiState.users.isNotEmpty()) {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(uiState.users) { user ->
+                        UserListItem(user)
+                    }
                 }
+            }
+
+            if (uiState.error.isNotBlank()) {
+                Text(
+                    text = uiState.error,
+                    color = MaterialTheme.colors.error,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                        .align(Alignment.Center)
+                )
+            }
+
+            if (uiState.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .size(200.dp),
+                    color = Color.Green
+                )
             }
         }
 
-        if (uiState.error.isNotBlank()) {
-            Text(
-                text = uiState.error,
-                color = MaterialTheme.colors.error,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
-                    .align(Alignment.Center)
-            )
-        }
-
-        if (uiState.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .size(200.dp),
-                color = Color.Green
-            )
-        }
     }
 
 
