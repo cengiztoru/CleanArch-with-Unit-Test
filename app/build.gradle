@@ -74,4 +74,7 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+
+    //Image Loading
+    implementation "com.github.skydoves:landscapist-glide:1.5.2"
 }
