@@ -18,8 +18,12 @@ import com.skydoves.landscapist.glide.GlideImage
 fun UserListItem(
     user: User
 ) {
-    Card(elevation = 8.dp,
-        modifier = Modifier.fillMaxWidth().padding(top = 16.dp, start = 16.dp, end = 16.dp).wrapContentSize(),
+    Card(
+        elevation = 8.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .wrapContentHeight(),
         backgroundColor = if (user.gender is Gender.Male) Color.Blue else Color.Magenta
 
     ) {
@@ -27,7 +31,9 @@ fun UserListItem(
             modifier = Modifier.fillMaxWidth()
         ) {
             GlideImage(
-                modifier = Modifier.size(150.dp)
+                modifier = Modifier
+                    .fillMaxWidth(0.4f)
+                    .aspectRatio(0.6f)
                     .clip(MaterialTheme.shapes.medium),
                 contentScale = ContentScale.Crop,
                 imageModel = user.picture.large,
