@@ -1,5 +1,6 @@
 package com.hms.archdemo.ui.users.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -9,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.hms.archdemo.domian.model.Gender
 import com.hms.archdemo.domian.model.User
@@ -27,12 +29,13 @@ fun UserListItem(
         backgroundColor = if (user.gender is Gender.Male) Color.Blue else Color.Magenta
 
     ) {
+
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
             GlideImage(
                 modifier = Modifier
-                    .fillMaxWidth(0.4f)
+                    .fillMaxWidth(CalculateImageWidthFractionAccordingOrientation())
                     .aspectRatio(0.6f)
                     .clip(MaterialTheme.shapes.medium),
                 contentScale = ContentScale.Crop,
@@ -52,4 +55,12 @@ fun UserListItem(
         }
     }
 
+}
+
+@Composable
+private fun CalculateImageWidthFractionAccordingOrientation(): Float {
+    val orientation = LocalConfiguration.current.orientation
+    return if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+        0.15f
+    else 0.4f
 }
