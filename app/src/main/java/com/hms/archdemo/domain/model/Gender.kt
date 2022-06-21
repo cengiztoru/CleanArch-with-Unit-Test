@@ -1,4 +1,4 @@
-package com.hms.archdemo.domian.model
+package com.hms.archdemo.domain.model
 
 sealed class Gender {
     object Male : Gender()

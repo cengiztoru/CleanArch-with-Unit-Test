@@ -1,9 +1,9 @@
-package com.hms.archdemo.domian.use_case
+package com.hms.archdemo.domain.use_case
 
 import com.hms.archdemo.common.Resource
-import com.hms.archdemo.domian.model.Gender
-import com.hms.archdemo.domian.model.Picture
-import com.hms.archdemo.domian.model.User
+import com.hms.archdemo.domain.model.Gender
+import com.hms.archdemo.domain.model.Picture
+import com.hms.archdemo.domain.model.User
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

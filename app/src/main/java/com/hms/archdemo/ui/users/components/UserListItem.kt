@@ -12,8 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.hms.archdemo.domian.model.Gender
-import com.hms.archdemo.domian.model.User
+import com.hms.archdemo.domain.model.Gender
+import com.hms.archdemo.domain.model.User
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable

@@ -1,4 +1,4 @@
-package com.hms.archdemo.domian.model
+package com.hms.archdemo.domain.model
 
 data class User(
     val fullName:String,
