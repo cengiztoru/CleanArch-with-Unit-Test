@@ -11,7 +11,9 @@ import javax.inject.Inject
 
 class FetchUsersUseCaseImpl @Inject constructor(
     private val usersRepository: UsersRepository,
-    private val userRemoteModelMapper: UserRemoteModelMapper
+    private val userRemoteModelMapper: UserRemoteModelMapper,
+    // you can use multiple repositories in UseCase classes
+    // you can use other UseCase classes, too
 ) : FetchUsersUseCase {
 
     override suspend fun fetchUsers(): Flow<Result<List<User>>> {

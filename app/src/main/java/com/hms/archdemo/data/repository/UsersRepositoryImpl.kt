@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
-    private val usersRemoteDataSource: UsersRemoteDataSource
+    private val usersRemoteDataSource: UsersRemoteDataSource,
+    // you can use multiple data sources in repository classes
+    // you can use other repository classes, too
 ) : UsersRepository {
 
     override suspend fun fetchUsers(): Flow<Result<List<UserRemoteModel>>> {
