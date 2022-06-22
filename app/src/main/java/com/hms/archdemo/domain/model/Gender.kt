@@ -1,6 +1,11 @@
 package com.hms.archdemo.domain.model
 
-sealed class Gender {
-    object Male : Gender()
-    object Female : Gender()
+enum class Gender(val value: String) {
+    MALE("male"),
+    FEMALE("female"),
+    OTHER("other");
+
+    companion object {
+        fun from(value: String): Gender = values().find { it.value == value } ?: OTHER
+    }
 }
