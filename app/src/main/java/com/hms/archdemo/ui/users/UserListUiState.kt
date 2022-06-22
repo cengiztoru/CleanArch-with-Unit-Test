@@ -1,9 +1,16 @@
 package com.hms.archdemo.ui.users
 
-import com.hms.archdemo.domain.use_case.UsersList
-
 data class UserListUiState(
-    val isLoading: Boolean = false,
-    val users: UsersList = emptyList(),
-    val error: String = ""
-)
+    val isLoading: Boolean,
+    val usersItemUiStates: List<UserItemUiState>,
+    val error: String
+) {
+
+    companion object {
+        fun initial() = UserListUiState(
+            isLoading = false,
+            usersItemUiStates = emptyList(),
+            error = ""
+        )
+    }
+}

@@ -19,7 +19,7 @@ import com.hms.archdemo.ui.users.components.UserListItem
 fun UserListScreen(
     viewModel: UserViewModel = hiltViewModel()
 ) {
-    val uiState = viewModel.uiState.value
+    val uiState = viewModel.uiState
 
     Column {
 
@@ -30,15 +30,15 @@ fun UserListScreen(
         )
 
         Box(modifier = Modifier.fillMaxSize()) {
-            if (uiState.users.isNotEmpty()) {
+            if (uiState.usersItemUiStates.isNotEmpty()) {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(uiState.users) { user ->
-                        UserListItem(user)
+                    items(uiState.usersItemUiStates) { userItemUiState ->
+                        UserListItem(userItemUiState = userItemUiState)
                     }
                 }
             }
 
-            if (uiState.error.isNotBlank()) {
+            if (uiState.error.isNotEmpty()) {
                 Text(
                     text = uiState.error,
                     color = MaterialTheme.colors.error,

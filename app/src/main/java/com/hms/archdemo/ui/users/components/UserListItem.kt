@@ -8,17 +8,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.hms.archdemo.domain.model.Gender
-import com.hms.archdemo.domain.model.User
+import com.hms.archdemo.ui.users.UserItemUiState
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun UserListItem(
-    user: User
+    userItemUiState: UserItemUiState
 ) {
     Card(
         elevation = 8.dp,
@@ -26,7 +24,7 @@ fun UserListItem(
             .fillMaxWidth()
             .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             .wrapContentHeight(),
-        backgroundColor = if (user.gender is Gender.Male) Color.Blue else Color.Magenta
+        backgroundColor = userItemUiState.getGenderColor()
 
     ) {
 
@@ -39,17 +37,17 @@ fun UserListItem(
                     .aspectRatio(0.6f)
                     .clip(MaterialTheme.shapes.medium),
                 contentScale = ContentScale.Crop,
-                imageModel = user.picture.large,
+                imageModel = userItemUiState.getImageUrl(),
             )
 
             Column(modifier = Modifier.padding(start = 16.dp, top = 4.dp)) {
-                Text(user.fullName, style = MaterialTheme.typography.h5)
+                Text(userItemUiState.getName(), style = MaterialTheme.typography.h5)
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(user.email)
+                Text(userItemUiState.getEmail())
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(user.phone)
+                Text(userItemUiState.getPhone())
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
