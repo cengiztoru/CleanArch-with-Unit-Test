@@ -1,6 +1,7 @@
 package com.hms.archdemo.di
 
 import com.hms.archdemo.BuildConfig
+import com.hms.archdemo.data.remote.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,6 +59,14 @@ object NetworkModule {
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserService(
+        retrofit: Retrofit
+    ): UserService {
+        return retrofit.create(UserService::class.java)
     }
 
 }
