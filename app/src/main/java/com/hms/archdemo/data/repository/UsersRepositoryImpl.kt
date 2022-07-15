@@ -1,11 +1,11 @@
 package com.hms.archdemo.data.repository
 
 import com.hms.archdemo.common.Result
+import com.hms.archdemo.common.extensions.map
 import com.hms.archdemo.data.data_source.UsersRemoteDataSource
 import com.hms.archdemo.data.model.UserRemoteModel
 import com.hms.archdemo.data.model.UsersResponse
 import com.hms.archdemo.domain.repository.UsersRepository
-import com.hms.archdemo.util.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

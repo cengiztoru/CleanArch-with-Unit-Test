@@ -1,4 +1,4 @@
-package com.hms.archdemo.util
+package com.hms.archdemo.common.extensions
 
 import com.hms.archdemo.common.Result
 
