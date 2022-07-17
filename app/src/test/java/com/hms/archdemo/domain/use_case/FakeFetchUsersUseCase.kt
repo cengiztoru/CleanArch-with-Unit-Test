@@ -13,13 +13,7 @@ class FakeFetchUsersUseCase(
         return flow {
             if (isSuccessful) {
                 emit(
-                    Result.Success(
-                        listOf(
-                            maleUser(),
-                            femaleUser(),
-                            undefinedUser()
-                        )
-                    )
+                    Result.Success(fakeUserList())
                 )
             } else {
                 emit(Result.Error(RuntimeException("ERROR")))
