@@ -1,91 +1,94 @@
 package com.hms.archdemo.domain.mapper
 
+import android.os.Build
 import com.google.common.truth.Truth
 import com.hms.archdemo.data.model.NameRemoteModel
 import com.hms.archdemo.data.model.PictureRemoteModel
 import com.hms.archdemo.data.model.UserRemoteModel
+import com.hms.archdemo.domain.decider.UserDecider
 import com.hms.archdemo.domain.model.Gender
+import com.hms.archdemo.domain.model.User
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.ParameterizedRobolectricTestRunner
+import org.robolectric.annotation.Config
 
-class UserMapperTest {
+@RunWith(ParameterizedRobolectricTestRunner::class)
+@Config(sdk = [Build.VERSION_CODES.O_MR1], manifest = Config.NONE)
+class UserMapperTest constructor(
+    private val userRemoteModel: UserRemoteModel,
+    private val expectedUser: User
+) {
+
 
     @Test
-    fun `given user name and surname separately, when mapOnUserRemoteModel called, then they should concat as fullName`() {
+    fun `Given userRemoteModel, When mapFrom method called, Then should return expectedUser model`() {
 
-        //given
-        val userMapper = UserMapper()
-        val userRemoteModel = UserRemoteModel(
-            "", NameRemoteModel("Mr", "Cengiz", "TORU"), "", "",
-            PictureRemoteModel("", "", "")
-        )
+        //Given
+        val userDecider = UserDecider()
+        val userMapper = UserMapper(userDecider)
 
-        val expectedUserFullName = "Cengiz TORU"
+        //When
+        val actualUser = userMapper.mapFrom(userRemoteModel)
 
-        //when
-        val actualUserFullName = userMapper.mapFrom(userRemoteModel).fullName
-
-        //then
-        Truth.assertThat(actualUserFullName).isEqualTo(expectedUserFullName)
-
+        //Then
+        Truth.assertThat(actualUser).isEqualTo(expectedUser)
     }
 
-    @Test
-    fun `given male, when mapOnUserRemoteModel called, then should return gender as MALE `() {
+    companion object {
+        @JvmStatic
+        @ParameterizedRobolectricTestRunner.Parameters(name = "given userRemoteModel {0}, expectedUser {1}")
+        fun provideParameters(): List<Array<out Any?>> {
+            return listOf(
+                getUserCase1(),
+                getUserCase2(),
+                getUserCase3(),
+            )
+        }
 
-        //given
-        val userMapper = UserMapper()
-        val userRemoteModel = UserRemoteModel(
-            "male", NameRemoteModel("", "", ""), "", "",
-            PictureRemoteModel("", "", "")
+        private val FAKE_USER_NAME = NameRemoteModel("mr", "cengiz", "toru")
+        private const val FAKE_USER_EMAIL = "ct@ct.com"
+        private const val FAKE_USER_PHONE = "+905554443322"
+        private val FAKE_PICTURE_MODEL =
+            PictureRemoteModel("largeImageUrl", "mediumImageUrl", "thumbnailImageUrl")
+
+        private fun getUserCase1() = arrayOf(
+            //Male User
+            baseUserRemoteModelInstance().copy(gender = "male"),
+            baseUserInstance().copy(gender = Gender.MALE)
         )
 
-        val expectedGender = Gender.MALE
-
-        //when
-        val actualGender = userMapper.mapFrom(userRemoteModel).gender
-
-        //then
-        Truth.assertThat(actualGender).isEqualTo(expectedGender)
-
-    }
-
-    @Test
-    fun `given female, when mapOnUserRemoteModel called, then should return gender as FEMALE `() {
-
-        //given
-        val userMapper = UserMapper()
-        val userRemoteModel = UserRemoteModel(
-            "female", NameRemoteModel("", "", ""), "", "",
-            PictureRemoteModel("", "", "")
+        private fun getUserCase2() = arrayOf(
+            //Female User
+            baseUserRemoteModelInstance().copy(gender = "female"),
+            baseUserInstance().copy(gender = Gender.FEMALE)
         )
 
-        val expectedGender = Gender.FEMALE
-
-        //when
-        val actualGender = userMapper.mapFrom(userRemoteModel).gender
-
-        //then
-        Truth.assertThat(actualGender).isEqualTo(expectedGender)
-
-    }
-
-    @Test
-    fun `given unknow gender, when mapOnUserRemoteModel called, then should return gender as FEMALE `() {
-
-        //given
-        val userMapper = UserMapper()
-        val userRemoteModel = UserRemoteModel(
-            "somethings", NameRemoteModel("", "", ""), "", "",
-            PictureRemoteModel("", "", "")
+        private fun getUserCase3() = arrayOf(
+            //UnDefined Gender
+            baseUserRemoteModelInstance().copy(gender = "somethings"),
+            baseUserInstance().copy(gender = Gender.OTHER)
         )
 
-        val expectedGender = Gender.OTHER
+        private fun baseUserRemoteModelInstance(): UserRemoteModel {
+            return UserRemoteModel(
+                name = FAKE_USER_NAME,
+                gender = "",
+                picture = FAKE_PICTURE_MODEL,
+                email = FAKE_USER_EMAIL,
+                phone = FAKE_USER_PHONE
+            )
+        }
 
-        //when
-        val actualGender = userMapper.mapFrom(userRemoteModel).gender
-
-        //then
-        Truth.assertThat(actualGender).isEqualTo(expectedGender)
+        private fun baseUserInstance(): User {
+            return User(
+                fullName = "Cengiz TORU",
+                gender = Gender.OTHER,
+                imageUrl = FAKE_PICTURE_MODEL.large,
+                email = FAKE_USER_EMAIL,
+                phone = FAKE_USER_PHONE
+            )
+        }
 
     }
 
