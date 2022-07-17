@@ -3,6 +3,7 @@ package com.hms.archdemo.domain.use_case
 import com.hms.archdemo.domain.mapper.UserFactory
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.ui.users.UserItemUiState
+import java.io.IOException
 
 fun maleUser() = UserFactory.createUser(Gender.MALE)
 fun femaleUser() = UserFactory.createUser(Gender.FEMALE)
@@ -14,3 +15,5 @@ fun fakeUserList() = listOf(
 )
 
 fun fakeUserListItemsWithUiState() = fakeUserList().map { user -> UserItemUiState(user) }
+
+fun fakeErrorException() = IOException("An Error Occurred")

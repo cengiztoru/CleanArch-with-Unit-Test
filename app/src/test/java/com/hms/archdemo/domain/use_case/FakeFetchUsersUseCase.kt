@@ -16,7 +16,7 @@ class FakeFetchUsersUseCase(
                     Result.Success(fakeUserList())
                 )
             } else {
-                emit(Result.Error(RuntimeException("ERROR")))
+                emit(Result.Error(fakeErrorException()))
             }
         }
     }

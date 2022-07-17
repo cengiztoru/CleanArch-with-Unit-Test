@@ -1,6 +1,7 @@
 package com.hms.archdemo.ui.users
 
 import com.hms.archdemo.domain.use_case.FakeFetchUsersUseCase
+import com.hms.archdemo.domain.use_case.fakeErrorException
 import com.hms.archdemo.domain.use_case.fakeUserListItemsWithUiState
 import com.hms.archdemo.util.CoroutineRule
 import com.hms.archdemo.util.extensions.shouldBe
@@ -37,6 +38,28 @@ class UserViewModelTest {
             isLoading = false,
             fakeUserListItemsWithUiState(),
             error = ""
+        )
+
+        //When
+        coroutineRule.testDispatcher.scheduler.runCurrent()
+        val actualUiState = viewModel.uiState
+
+        //Then
+        actualUiState shouldBe expectedUiState
+
+    }
+
+    @Test
+    fun `Given fetching users failed, When getUsers called, Then uiState should update as error`() {
+
+        //Given
+        val fetchUsersUseCase = FakeFetchUsersUseCase(isSuccessful = false)
+        val viewModel = UserViewModel(fetchUsersUseCase)
+
+        val expectedUiState = UserListUiState(
+            isLoading = false,
+            usersItemUiStates = emptyList(),
+            error = fakeErrorException().message.orEmpty()
         )
 
         //When
