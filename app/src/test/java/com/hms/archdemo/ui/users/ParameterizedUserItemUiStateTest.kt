@@ -2,9 +2,9 @@ package com.hms.archdemo.ui.users
 
 import android.os.Build
 import androidx.compose.ui.graphics.Color
-import com.google.common.truth.Truth
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.domain.model.User
+import com.hms.archdemo.util.extensions.shouldBe
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.ParameterizedRobolectricTestRunner
@@ -30,8 +30,7 @@ class ParameterizedUserItemUiStateTest constructor(
         val actualColor = userItemUiSate.getGenderColor()
 
         //Then
-        Truth.assertThat(actualColor).isEqualTo(expectedColor)
-
+        actualColor shouldBe expectedColor
     }
 
     companion object {

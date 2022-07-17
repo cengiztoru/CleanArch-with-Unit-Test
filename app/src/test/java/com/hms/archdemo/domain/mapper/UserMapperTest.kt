@@ -1,13 +1,13 @@
 package com.hms.archdemo.domain.mapper
 
 import android.os.Build
-import com.google.common.truth.Truth
 import com.hms.archdemo.data.model.NameRemoteModel
 import com.hms.archdemo.data.model.PictureRemoteModel
 import com.hms.archdemo.data.model.UserRemoteModel
 import com.hms.archdemo.domain.decider.UserDecider
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.domain.model.User
+import com.hms.archdemo.util.extensions.shouldBe
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.ParameterizedRobolectricTestRunner
@@ -32,7 +32,7 @@ class UserMapperTest constructor(
         val actualUser = userMapper.mapFrom(userRemoteModel)
 
         //Then
-        Truth.assertThat(actualUser).isEqualTo(expectedUser)
+        actualUser shouldBe expectedUser
     }
 
     companion object {
