@@ -8,7 +8,7 @@ data class UserListUiState(
 
     companion object {
         fun initial() = UserListUiState(
-            isLoading = false,
+            isLoading = true,
             usersItemUiStates = emptyList(),
             error = ""
         )
