@@ -3,7 +3,7 @@ package com.hms.archdemo.ui.users
 import androidx.compose.ui.graphics.Color
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.domain.model.User
-import com.hms.archdemo.util.extensions.shouldBe
+import com.hms.archdemo.util.extensions.shouldEqual
 import org.junit.Test
 
 class UserItemUiStateTest {
@@ -20,7 +20,7 @@ class UserItemUiStateTest {
         val actualColor = userItemUiSate.getGenderColor()
 
         //Then
-        actualColor shouldBe expectedColor
+        actualColor shouldEqual expectedColor
 
     }
 
@@ -36,7 +36,7 @@ class UserItemUiStateTest {
         val actualColor = userItemUiSate.getGenderColor()
 
         //Then
-        actualColor shouldBe expectedColor
+        actualColor shouldEqual expectedColor
 
     }
 
@@ -52,7 +52,7 @@ class UserItemUiStateTest {
         val actualColor = userItemUiSate.getGenderColor()
 
         //Then
-        actualColor shouldBe expectedColor
+        actualColor shouldEqual expectedColor
 
     }
 

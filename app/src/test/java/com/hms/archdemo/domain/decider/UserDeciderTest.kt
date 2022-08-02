@@ -3,7 +3,7 @@ package com.hms.archdemo.domain.decider
 import com.hms.archdemo.data.model.NameRemoteModel
 import com.hms.archdemo.data.model.PictureRemoteModel
 import com.hms.archdemo.domain.model.Gender
-import com.hms.archdemo.util.extensions.shouldBe
+import com.hms.archdemo.util.extensions.shouldEqual
 import org.junit.Before
 import org.junit.Test
 
@@ -28,7 +28,7 @@ class UserDeciderTest {
         val actualUserFullName = decider.decideFullName(nameRemoteModel)
 
         //then
-        actualUserFullName shouldBe expectedUserFullName
+        actualUserFullName shouldEqual expectedUserFullName
     }
 
     @Test
@@ -43,7 +43,7 @@ class UserDeciderTest {
         val actualGender = decider.decideGender(gender)
 
         //then
-        actualGender shouldBe expectedGender
+        actualGender shouldEqual expectedGender
     }
 
     @Test
@@ -58,7 +58,7 @@ class UserDeciderTest {
         val actualGender = decider.decideGender(gender)
 
         //then
-        actualGender shouldBe expectedGender
+        actualGender shouldEqual expectedGender
 
     }
 
@@ -74,7 +74,7 @@ class UserDeciderTest {
         val actualGender = decider.decideGender(gender)
 
         //then
-        actualGender shouldBe expectedGender
+        actualGender shouldEqual expectedGender
 
     }
 
@@ -91,7 +91,7 @@ class UserDeciderTest {
         val actualImageUrl = decider.decideImageUrl(pictureRemoteModel)
 
         //then
-        actualImageUrl shouldBe expectedImageUrl
+        actualImageUrl shouldEqual expectedImageUrl
 
     }
 

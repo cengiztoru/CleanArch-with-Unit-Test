@@ -5,7 +5,7 @@ import com.hms.archdemo.data.model.UserRemoteModel
 import com.hms.archdemo.domain.decider.UserDecider
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.domain.model.User
-import com.hms.archdemo.util.extensions.shouldBe
+import com.hms.archdemo.util.extensions.shouldEqual
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.ParameterizedRobolectricTestRunner
@@ -30,7 +30,7 @@ class UserMapperTest constructor(
         val actualUser = userMapper.mapFrom(userRemoteModel)
 
         //Then
-        actualUser shouldBe expectedUser
+        actualUser shouldEqual expectedUser
     }
 
     companion object {

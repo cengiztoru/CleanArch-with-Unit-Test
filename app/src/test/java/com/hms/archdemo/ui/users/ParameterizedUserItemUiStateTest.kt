@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.compose.ui.graphics.Color
 import com.hms.archdemo.domain.model.Gender
 import com.hms.archdemo.domain.model.User
-import com.hms.archdemo.util.extensions.shouldBe
+import com.hms.archdemo.util.extensions.shouldEqual
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.ParameterizedRobolectricTestRunner
@@ -30,7 +30,7 @@ class ParameterizedUserItemUiStateTest constructor(
         val actualColor = userItemUiSate.getGenderColor()
 
         //Then
-        actualColor shouldBe expectedColor
+        actualColor shouldEqual expectedColor
     }
 
     companion object {

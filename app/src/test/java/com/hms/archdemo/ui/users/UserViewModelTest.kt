@@ -4,7 +4,7 @@ import com.hms.archdemo.domain.use_case.FakeFetchUsersUseCase
 import com.hms.archdemo.domain.use_case.fakeErrorException
 import com.hms.archdemo.domain.use_case.fakeUserListItemsWithUiState
 import com.hms.archdemo.util.CoroutineRule
-import com.hms.archdemo.util.extensions.shouldBe
+import com.hms.archdemo.util.extensions.shouldEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -45,7 +45,7 @@ class UserViewModelTest {
         val actualUiState = viewModel.uiState
 
         //Then
-        actualUiState shouldBe expectedUiState
+        actualUiState shouldEqual expectedUiState
 
     }
 
@@ -67,7 +67,7 @@ class UserViewModelTest {
         val actualUiState = viewModel.uiState
 
         //Then
-        actualUiState shouldBe expectedUiState
+        actualUiState shouldEqual expectedUiState
 
     }
 
