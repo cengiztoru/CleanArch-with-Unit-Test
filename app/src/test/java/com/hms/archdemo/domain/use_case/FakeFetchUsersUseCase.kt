@@ -13,10 +13,10 @@ class FakeFetchUsersUseCase(
         return flow {
             if (isSuccessful) {
                 emit(
-                    Result.Success(fakeUserList())
+                    Result.Success(dummyUserList())
                 )
             } else {
-                emit(Result.Error(fakeErrorException()))
+                emit(Result.Error(dummyErrorException()))
             }
         }
     }

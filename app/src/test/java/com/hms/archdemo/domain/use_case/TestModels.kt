@@ -8,12 +8,12 @@ import java.io.IOException
 fun maleUser() = UserFactory.createUser(Gender.MALE)
 fun femaleUser() = UserFactory.createUser(Gender.FEMALE)
 fun undefinedUser() = UserFactory.createUser(Gender.OTHER)
-fun fakeUserList() = listOf(
+fun dummyUserList() = listOf(
     maleUser(),
     femaleUser(),
     undefinedUser()
 )
 
-fun fakeUserListItemsWithUiState() = fakeUserList().map { user -> UserItemUiState(user) }
+fun fakeUserListItemsWithUiState() = dummyUserList().map { user -> UserItemUiState(user) }
 
-fun fakeErrorException() = IOException("An Error Occurred")
+fun dummyErrorException() = IOException("An Error Occurred")

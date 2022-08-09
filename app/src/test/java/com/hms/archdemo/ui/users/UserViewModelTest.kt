@@ -1,7 +1,7 @@
 package com.hms.archdemo.ui.users
 
 import com.hms.archdemo.domain.use_case.FakeFetchUsersUseCase
-import com.hms.archdemo.domain.use_case.fakeErrorException
+import com.hms.archdemo.domain.use_case.dummyErrorException
 import com.hms.archdemo.domain.use_case.fakeUserListItemsWithUiState
 import com.hms.archdemo.util.CoroutineRule
 import com.hms.archdemo.util.extensions.shouldEqual
@@ -59,7 +59,7 @@ class UserViewModelTest {
         val expectedUiState = UserListUiState(
             isLoading = false,
             usersItemUiStates = emptyList(),
-            error = fakeErrorException().message.orEmpty()
+            error = dummyErrorException().message.orEmpty()
         )
 
         //When
