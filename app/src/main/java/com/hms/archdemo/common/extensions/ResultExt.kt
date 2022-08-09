@@ -1,13 +1,13 @@
 package com.hms.archdemo.common.extensions
 
-import com.hms.archdemo.common.Result
+import com.hms.archdemo.common.Resource
 
-inline fun <T, R> Result<T>.map(transform: (T) -> R): Result<R> {
+inline fun <T, R> Resource<T>.map(transform: (T) -> R): Resource<R> {
     return when (this) {
-        is Result.Success -> Result.Success(
+        is Resource.Success -> Resource.Success(
             transform(data)
         )
-        is Result.Error -> Result.Error(exception)
-        is Result.Loading -> Result.Loading
+        is Resource.Error -> Resource.Error(exception)
+        is Resource.Loading -> Resource.Loading
     }
 }

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hms.archdemo.common.Result.*
+import com.hms.archdemo.common.Resource.*
 import com.hms.archdemo.domain.model.User
 import com.hms.archdemo.domain.use_case.FetchUsersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

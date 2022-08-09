@@ -1,6 +1,6 @@
 package com.hms.archdemo.data.repository
 
-import com.hms.archdemo.common.Result
+import com.hms.archdemo.common.Resource
 import com.hms.archdemo.common.extensions.map
 import com.hms.archdemo.data.data_source.UsersRemoteDataSource
 import com.hms.archdemo.data.model.UserRemoteModel
@@ -16,7 +16,7 @@ class UsersRepositoryImpl @Inject constructor(
     // you can use other repository classes, too
 ) : UsersRepository {
 
-    override suspend fun fetchUsers(): Flow<Result<List<UserRemoteModel>>> {
+    override suspend fun fetchUsers(): Flow<Resource<List<UserRemoteModel>>> {
         return usersRemoteDataSource.fetchUsers().map {
             it.map { usersResponse ->
                 mapOnUsersResponse(usersResponse = usersResponse)

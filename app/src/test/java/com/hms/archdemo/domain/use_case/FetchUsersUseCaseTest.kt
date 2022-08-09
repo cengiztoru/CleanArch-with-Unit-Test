@@ -1,5 +1,6 @@
 package com.hms.archdemo.domain.use_case
 
+import com.hms.archdemo.common.Resource
 import com.hms.archdemo.data.repository.FakeUsersRepository
 import com.hms.archdemo.domain.decider.UserDecider
 import com.hms.archdemo.domain.mapper.UserMapper
@@ -34,7 +35,7 @@ class FetchUsersUseCaseTest {
 
     @Test
     fun `When starting to fetch users then repository should expose Loading initially`() = runTest {
-        com.hms.archdemo.common.Result.Loading shouldEqual fetchUsersUseCase.fetchUsers().first()
+        Resource.Loading shouldEqual fetchUsersUseCase.fetchUsers().first()
     }
 
     @Test
@@ -49,10 +50,10 @@ class FetchUsersUseCaseTest {
             val fetchUsersResult = fetchUsersUseCase.fetchUsers().first()
 
             //Then
-            assert(fetchUsersResult is com.hms.archdemo.common.Result.Success)
+            assert(fetchUsersResult is Resource.Success)
 
             val actualData = (fetchUsersUseCase.fetchUsers()
-                .first() as com.hms.archdemo.common.Result.Success).data
+                .first() as Resource.Success).data
 
             val expectedUsers = dummyUserList()
 
@@ -74,10 +75,10 @@ class FetchUsersUseCaseTest {
             val fetchUsersResult = fetchUsersUseCase.fetchUsers().first()
 
             //Then
-            assert(fetchUsersResult is com.hms.archdemo.common.Result.Error)
+            assert(fetchUsersResult is Resource.Error)
 
             val actualException = (fetchUsersUseCase.fetchUsers()
-                .first() as com.hms.archdemo.common.Result.Error).exception
+                .first() as Resource.Error).exception
 
             assert(actualException != null)
 
